@@ -1,0 +1,13 @@
+
+\DashboardMenu::registerItem([
+        'id' => route('admin.dashboard'),
+        'priority' => 1,
+        'parent_id' => 'menu',
+        'heading' => 'Menu',
+        'title' => 'Menus',
+        'font_icon' => 'fa fa-circle-o',
+        'link' => route('admin.dashboard'),
+        // 'link' => '',
+        'css_class' => null,
+        'permissions' => 'view-backend'
+]);

@@ -1,0 +1,98 @@
+<?php
+
+namespace $CLASS_NAMESPACE$;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Controller;
+
+use $CLASS_NAMESPACE$\$NAME$DataTable;
+use $MODULE_NAMESPACE$\$MODULE$\Http\Requests\$NAME$FormRequest;
+use $MODULE_NAMESPACE$\$MODULE$\$MODEL_NAMESPACE$\$NAME$;
+
+class $NAME$Controller extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     * @return Response
+     */
+    public function index($NAME$DataTable $dataTable)
+    {
+        return $dataTable->render('$LOWER_NAME$::datatable',['title' => '$NAME$','subtitle' => 'Listado']);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     * @return Response
+     */
+    public function create()
+    {
+        $model = new $NAME$ ;
+        $fields = [$FILLABLE$];
+        $storeRoute = '$LOWER_MODULE$.$LOWER_CLASS$.store';
+        return view('$LOWER_NAME$::create')->with('model', $model)->with('fields', $fields)->with('storeRoute', $storeRoute)
+                ->with('title', '$NAME$')
+                ->with('subtitle', 'Nuevo/a');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * @param  Request $request
+     * @return Response
+     */
+    public function store($NAME$FormRequest $request)
+    {
+        $model = $NAME$::create($request->all());
+        return redirect()->route('$LOWER_MODULE$.$LOWER_CLASS$.show',$model->id)->with('flash_success', 'Creado!');
+    }
+
+    /**
+     * Show the specified resource.
+     * @return Response
+     */
+    public function show($id)
+    {
+        $model = $NAME$::findOrFail($id);
+        $fields = [$FILLABLE$];
+        return view('$LOWER_NAME$::show')->with('model', $model)->with('fields', $fields)
+                ->with('title', '$NAME$')
+                ->with('subtitle', 'Ver');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $model = $NAME$::findOrFail($id);
+        $fields = [$FILLABLE$];
+        $updateRoute = '$LOWER_MODULE$.$LOWER_CLASS$.update';
+        return view('$LOWER_NAME$::edit')->with('model', $model)->with('fields', $fields)->with('updateRoute', $updateRoute)
+                ->with('title', '$NAME$')
+                ->with('subtitle', 'Editar');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * @param  Request $request
+     * @return Response
+     */
+    public function update($NAME$FormRequest $request,$id)
+    {
+        $model = $NAME$::findOrFail($id);
+        $model->update($request->all());
+        return redirect()->route('$LOWER_MODULE$.$LOWER_CLASS$.show',$model->id)->with('flash_success', 'Guardado');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $model = $NAME$::findOrFail($id);
+        $model->delete();
+        return redirect()->route('$LOWER_MODULE$.$LOWER_CLASS$.index')->with('flash_success', 'Eliminado');
+    }
+}

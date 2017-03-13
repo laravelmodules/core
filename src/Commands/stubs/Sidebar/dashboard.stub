@@ -1,0 +1,36 @@
+<?php
+
+\MenuDashboard::registerItem([
+    'id' => '$STUDLY_NAME$',
+    'priority' => 20,
+    'parent_id' => null,
+    'heading' => '',
+    // 'heading' => '$STUDLY_NAME$',
+    'title' => '$STUDLY_NAME$',
+    'font_icon' => 'fa fa-bars',
+    // 'link' => route('$LOWER_NAME$.$LOWER_NAME$.index.get'),
+    'link' => '',
+    'css_class' => null,
+    'permissions' => ['view-menus']
+]);
+
+// \DashboardMenu::registerResource([
+//      'parent' => '$STUDLY_NAME$', // Module Name
+//      'prefix' => '$LOWER_NAME$', // Route prefix
+//      'resource' => '$LOWER_NAME$', // Resouce name
+//      'permissions' => 'view-backend', // Permissions Group
+//      'priority' => 31, // priority Group
+// ]);
+
+// \MenuDashboard::registerItem([
+//         'id' => route('$LOWER_NAME$.$LOWER_NAME$.index'),
+//         'priority' => 1,
+//         'parent_id' => '$STUDLY_NAME$',
+//         'heading' => 'Claro',
+//         'title' => 'Claro',
+//         'font_icon' => 'fa fa-plus-circle',
+//         'link' => route('$LOWER_NAME$.$LOWER_NAME$.index'),
+//         // 'link' => '',
+//         'css_class' => null,
+//         'permissions' => 'view-backend'
+// ]);

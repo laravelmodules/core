@@ -1,0 +1,17 @@
+<?php
+
+if (! function_exists('$LOWER_NAME$_config')) {
+    /**
+     * Get / set the specified configuration value.
+     *
+     * If an array is passed as the key, we will assume you want to set an array of values.
+     *
+     * @param  array|string  $key
+     * @param  mixed  $default
+     * @return mixed
+     */
+     function $LOWER_NAME$_config($key = null, $default = null)
+     {
+         return config('module.$LOWER_NAME$.'.$key, $default);
+     }
+}

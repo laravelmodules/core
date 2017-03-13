@@ -1,0 +1,42 @@
+<?php
+
+namespace $MODULE_NAMESPACE$\$MODULE$\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class $NAME$ extends ServiceProvider
+{
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        app()->booted(function () {
+            $this->booted();
+        });
+    }
+
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        /**
+         * Register Admin Breadcrumbs (admin)
+         */
+        require __DIR__ .'/../Breadcrumbs/admin.php';
+        /**
+         * Register Dashboard Breadcrumbs (dashboard)
+         */
+        require __DIR__ .'/../Breadcrumbs/dashboard.php';
+    }
+
+    private function booted()
+    {
+        //
+    }
+}

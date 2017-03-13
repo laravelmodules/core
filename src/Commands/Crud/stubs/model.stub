@@ -1,0 +1,21 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Database\Eloquent\Model;
+
+class $CLASS$ extends Model
+{
+    protected $table = '$TABLE_NAME$';
+    protected $fillable = $FILLABLE$;
+
+    protected $apends = 'action_buttons';
+
+    public function getActionButtonsAttribute()
+    {
+        $show = '<a href="'.route('$LOWER_MODULE$.$LOWER_CLASS$.show',$this->id).'" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="'.__('Show').'"><i class="glyphicon glyphicon-eye-open"></i> </a>' ;
+        $edit = '<a href="'.route('$LOWER_MODULE$.$LOWER_CLASS$.edit',$this->id).'" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="'.__('Edit').'"><i class="glyphicon glyphicon-edit"></i> </a>' ;
+        $delete = '<a href="'.route('$LOWER_MODULE$.$LOWER_CLASS$.destroy',$this->id).'" class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="'.__('Delete').'"><i class="glyphicon glyphicon-trash"></i> </a>' ;
+        return $show.' '.$edit.' '.$delete;
+    }
+}

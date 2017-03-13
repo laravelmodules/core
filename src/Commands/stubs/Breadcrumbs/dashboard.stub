@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * $STUDLY_NAME$
+ */
+// \Breadcrumbs::register('$LOWER_NAME$.$LOWER_NAME$.index', function ($breadcrumbs) {
+//     $breadcrumbs->parent('admin.dashboard');
+//     $breadcrumbs->push(__('$STUDLY_NAME$'), route('$LOWER_NAME$.$LOWER_NAME$.index'));
+// });
+// \Breadcrumbs::register('$LOWER_NAME$.$LOWER_NAME$.create', function ($breadcrumbs) {
+//     $breadcrumbs->parent('$LOWER_NAME$.$LOWER_NAME$.index');
+//     $breadcrumbs->push(__('Nueva $STUDLY_NAME$'), route('$LOWER_NAME$.$LOWER_NAME$.create'));
+// });
+// \Breadcrumbs::register('$LOWER_NAME$.$LOWER_NAME$.update', function ($breadcrumbs) {
+//     $breadcrumbs->parent('$LOWER_NAME$.$LOWER_NAME$.index');
+//     $breadcrumbs->push(__('Actualizar $STUDLY_NAME$'), route('$LOWER_NAME$.$LOWER_NAME$.update',\Route::current()->parameters()['$LOWER_NAME$']));
+// });
+// \Breadcrumbs::register('$LOWER_NAME$.$LOWER_NAME$.show', function ($breadcrumbs) {
+//     $breadcrumbs->parent('$LOWER_NAME$.$LOWER_NAME$.index');
+//     $breadcrumbs->push(__('View $STUDLY_NAME$'), route('$LOWER_NAME$.$LOWER_NAME$.show',\Route::current()->parameters()['$LOWER_NAME$']));
+// });
+// \Breadcrumbs::register('$LOWER_NAME$.$LOWER_NAME$.edit', function ($breadcrumbs) {
+//     $breadcrumbs->parent('$LOWER_NAME$.$LOWER_NAME$.index');
+//     $breadcrumbs->push(__('Edit $STUDLY_NAME$'), route('$LOWER_NAME$.$LOWER_NAME$.edit',\Route::current()->parameters()['$LOWER_NAME$']));
+// });
