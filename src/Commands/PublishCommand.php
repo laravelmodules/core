@@ -1,10 +1,10 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands;
+namespace Amamarul\Modules\Commands;
 
 use Illuminate\Console\Command;
-use Amamarul\ModulesMaru\Module;
-use Amamarul\ModulesMaru\Publishing\AssetPublisher;
+use Amamarul\Modules\Module;
+use Amamarul\Modules\Publishing\AssetPublisher;
 use Symfony\Component\Console\Input\InputArgument;
 
 class PublishCommand extends Command

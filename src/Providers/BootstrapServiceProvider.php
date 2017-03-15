@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Providers;
+namespace Amamarul\Modules\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

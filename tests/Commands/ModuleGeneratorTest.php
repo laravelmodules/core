@@ -1,8 +1,8 @@
 <?php
 
-namespace Amamarul\ModulesMaru\tests\Commands;
+namespace Amamarul\Modules\tests\Commands;
 
-use Amamarul\ModulesMaru\Tests\BaseTestCase;
+use Amamarul\Modules\Tests\BaseTestCase;
 
 class ModuleGeneratorTest extends BaseTestCase
 {
@@ -96,8 +96,8 @@ class ModuleGeneratorTest extends BaseTestCase
     "description": "",
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "Maru Amallo - amamarul",
+            "email": "ama_marul@hotmail.com"
         }
     ],
     "autoload": {

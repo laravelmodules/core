@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands\Crud;
+namespace Amamarul\Modules\Commands\Crud;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;

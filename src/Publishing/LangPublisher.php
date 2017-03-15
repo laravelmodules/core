@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Publishing;
+namespace Amamarul\Modules\Publishing;
 
 class LangPublisher extends Publisher
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Contracts;
+namespace Amamarul\Modules\Contracts;
 
 interface RunableInterface
 {

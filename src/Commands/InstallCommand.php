@@ -1,10 +1,10 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands;
+namespace Amamarul\Modules\Commands;
 
 use Illuminate\Console\Command;
-use Amamarul\ModulesMaru\Json;
-use Amamarul\ModulesMaru\Process\Installer;
+use Amamarul\Modules\Json;
+use Amamarul\Modules\Process\Installer;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 

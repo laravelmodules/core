@@ -1,8 +1,8 @@
 <?php
 
-namespace Amamarul\ModulesMaru\tests\Commands;
+namespace Amamarul\Modules\tests\Commands;
 
-use Amamarul\ModulesMaru\Tests\BaseTestCase;
+use Amamarul\Modules\Tests\BaseTestCase;
 
 class GenerateEventCommandTest extends BaseTestCase
 {

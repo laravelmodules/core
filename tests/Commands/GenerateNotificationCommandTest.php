@@ -1,8 +1,8 @@
 <?php
 
-namespace Amamarul\ModulesMaru\tests\Commands;
+namespace Amamarul\Modules\tests\Commands;
 
-use Amamarul\ModulesMaru\tests\BaseTestCase;
+use Amamarul\Modules\tests\BaseTestCase;
 
 class GenerateNotificationCommandTest extends BaseTestCase
 {

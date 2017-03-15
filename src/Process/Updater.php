@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Process;
+namespace Amamarul\Modules\Process;
 
 class Updater extends Runner
 {

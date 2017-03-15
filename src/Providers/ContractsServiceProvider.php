@@ -1,10 +1,10 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Providers;
+namespace Amamarul\Modules\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Amamarul\ModulesMaru\Contracts\RepositoryInterface;
-use Amamarul\ModulesMaru\Repository;
+use Amamarul\Modules\Contracts\RepositoryInterface;
+use Amamarul\Modules\Repository;
 
 class ContractsServiceProvider extends ServiceProvider
 {

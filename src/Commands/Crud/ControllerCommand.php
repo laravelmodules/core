@@ -1,15 +1,15 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands\Crud;
+namespace Amamarul\Modules\Commands\Crud;
 
-use Amamarul\ModulesMaru\Support\Stub;
-use Amamarul\ModulesMaru\Traits\ModuleCommandTrait;
+use Amamarul\Modules\Support\Stub;
+use Amamarul\Modules\Traits\ModuleCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 // use Illuminate\Filesystem\Filesystem;
 use Facades\Illuminate\Filesystem\Filesystem;
-use Amamarul\ModulesMaru\Commands\GeneratorCommand;
+use Amamarul\Modules\Commands\GeneratorCommand;
 
 class ControllerCommand extends GeneratorCommand
 {

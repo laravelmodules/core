@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Exceptions;
+namespace Amamarul\Modules\Exceptions;
 
 class ModuleNotFoundException extends \Exception
 {

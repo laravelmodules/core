@@ -1,12 +1,10 @@
 {
-  "name": "amamarul/laravel-modules",
-  "description": "Laravel Module management",
+  "name": "laravelmodules/core",
+  "description": "Laravel Modules",
   "keywords": [
     "modules",
     "laravel",
-    "nwidart",
-    "module",
-    "rad"
+    "module"
   ],
   "license": "MIT",
   "authors": [
@@ -40,12 +38,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Amamarul\\ModulesMaru\\": "src"
+      "Amamarul\\Modules\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Amamarul\\ModulesMaru\\Tests\\": "tests"
+      "Amamarul\\Modules\\Tests\\": "tests"
     }
   },
   "minimum-stability": "dev",

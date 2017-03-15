@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Support;
+namespace Amamarul\Modules\Support;
 
 class Stub
 {

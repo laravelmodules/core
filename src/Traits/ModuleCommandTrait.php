@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Traits;
+namespace Amamarul\Modules\Traits;
 
 trait ModuleCommandTrait
 {

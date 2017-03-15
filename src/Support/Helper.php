@@ -1,4 +1,4 @@
-<?php namespace Amamarul\ModulesMaru\Support;
+<?php namespace Amamarul\Modules\Support;
 
 class Helper {
     public static function loadModuleHelpers($dir)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Support\Migrations;
+namespace Amamarul\Modules\Support\Migrations;
 
 use Illuminate\Contracts\Support\Arrayable;
 

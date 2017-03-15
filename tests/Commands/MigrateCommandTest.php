@@ -1,10 +1,10 @@
 <?php
 
-namespace Amamarul\ModulesMaru\tests\Commands;
+namespace Amamarul\Modules\tests\Commands;
 
 use Illuminate\Support\Facades\Schema;
-use Amamarul\ModulesMaru\Repository;
-use Amamarul\ModulesMaru\Tests\BaseTestCase;
+use Amamarul\Modules\Repository;
+use Amamarul\Modules\Tests\BaseTestCase;
 
 abstract class MigrateCommandTest extends BaseTestCase
 {

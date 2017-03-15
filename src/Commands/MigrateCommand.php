@@ -1,10 +1,10 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands;
+namespace Amamarul\Modules\Commands;
 
 use Illuminate\Console\Command;
-use Amamarul\ModulesMaru\Migrations\Migrator;
-use Amamarul\ModulesMaru\Module;
+use Amamarul\Modules\Migrations\Migrator;
+use Amamarul\Modules\Module;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -25,7 +25,7 @@ class MigrateCommand extends Command
     protected $description = 'Migrate the migrations from the specified module or from all modules.';
 
     /**
-     * @var \Amamarul\ModulesMaru\Repository
+     * @var \Amamarul\Modules\Repository
      */
     protected $module;
 

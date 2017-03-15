@@ -1,11 +1,11 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Publishing;
+namespace Amamarul\Modules\Publishing;
 
 use Illuminate\Console\Command;
-use Amamarul\ModulesMaru\Contracts\PublisherInterface;
-use Amamarul\ModulesMaru\Module;
-use Amamarul\ModulesMaru\Repository;
+use Amamarul\Modules\Contracts\PublisherInterface;
+use Amamarul\Modules\Module;
+use Amamarul\Modules\Repository;
 
 abstract class Publisher implements PublisherInterface
 {
@@ -19,7 +19,7 @@ abstract class Publisher implements PublisherInterface
     /**
      * The modules repository instance.
      *
-     * @var \Amamarul\ModulesMaru\Repository
+     * @var \Amamarul\Modules\Repository
      */
     protected $repository;
 
@@ -88,7 +88,7 @@ abstract class Publisher implements PublisherInterface
     /**
      * Get module instance.
      *
-     * @return \Amamarul\ModulesMaru\Module
+     * @return \Amamarul\Modules\Module
      */
     public function getModule()
     {
@@ -98,7 +98,7 @@ abstract class Publisher implements PublisherInterface
     /**
      * Set modules repository instance.
      *
-     * @param \Amamarul\ModulesMaru\Repository $repository
+     * @param \Amamarul\Modules\Repository $repository
      *
      * @return $this
      */
@@ -112,7 +112,7 @@ abstract class Publisher implements PublisherInterface
     /**
      * Get modules repository instance.
      *
-     * @return \Amamarul\ModulesMaru\Repository
+     * @return \Amamarul\Modules\Repository
      */
     public function getRepository()
     {

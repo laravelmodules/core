@@ -1,8 +1,8 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Publishing;
+namespace Amamarul\Modules\Publishing;
 
-use Amamarul\ModulesMaru\Migrations\Migrator;
+use Amamarul\Modules\Migrations\Migrator;
 
 class MigrationPublisher extends AssetPublisher
 {

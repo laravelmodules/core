@@ -1,9 +1,9 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Generators;
+namespace Amamarul\Modules\Generators;
 
 use Illuminate\Filesystem\Filesystem;
-use Amamarul\ModulesMaru\Exceptions\FileAlreadyExistException;
+use Amamarul\Modules\Exceptions\FileAlreadyExistException;
 
 class FileGenerator extends Generator
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands;
+namespace Amamarul\Modules\Commands;
 
 use Illuminate\Console\Command;
-use Amamarul\ModulesMaru\Migrations\Migrator;
-use Amamarul\ModulesMaru\Publishing\MigrationPublisher;
+use Amamarul\Modules\Migrations\Migrator;
+use Amamarul\Modules\Publishing\MigrationPublisher;
 use Symfony\Component\Console\Input\InputArgument;
 
 class PublishMigrationCommand extends Command
@@ -46,7 +46,7 @@ class PublishMigrationCommand extends Command
     /**
      * Publish migration for the specified module.
      *
-     * @param \Amamarul\ModulesMaru\Module $module
+     * @param \Amamarul\Modules\Module $module
      */
     public function publish($module)
     {

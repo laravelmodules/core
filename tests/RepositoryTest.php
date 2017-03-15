@@ -1,12 +1,12 @@
 <?php
 
-namespace Amamarul\ModulesMaru\tests;
+namespace Amamarul\Modules\tests;
 
 use Illuminate\Filesystem\Filesystem;
-use Amamarul\ModulesMaru\Collection;
-use Amamarul\ModulesMaru\Exceptions\ModuleNotFoundException;
-use Amamarul\ModulesMaru\Module;
-use Amamarul\ModulesMaru\Repository;
+use Amamarul\Modules\Collection;
+use Amamarul\Modules\Exceptions\ModuleNotFoundException;
+use Amamarul\Modules\Module;
+use Amamarul\Modules\Repository;
 
 class RepositoryTest extends BaseTestCase
 {

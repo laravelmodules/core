@@ -1,13 +1,4 @@
-# Laravel-Modules
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/nwidart/laravel-modules.svg?style=flat-square)](https://packagist.org/packages/nwidart/laravel-modules)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/nWidart/laravel-modules/master.svg?style=flat-square)](https://travis-ci.org/nWidart/laravel-modules)
-[![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/nWidart/laravel-modules.svg?maxAge=86400&style=flat-square)](https://scrutinizer-ci.com/g/nWidart/laravel-modules/?branch=master)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/25320a08-8af4-475e-a23e-3321f55bf8d2.svg?style=flat-square)](https://insight.sensiolabs.com/projects/25320a08-8af4-475e-a23e-3321f55bf8d2)
-[![Quality Score](https://img.shields.io/scrutinizer/g/nWidart/laravel-modules.svg?style=flat-square)](https://scrutinizer-ci.com/g/nWidart/laravel-modules)
-[![Total Downloads](https://img.shields.io/packagist/dt/nwidart/laravel-modules.svg?style=flat-square)](https://packagist.org/packages/nwidart/laravel-modules)
-
+# LaravelModules
 
 - [Upgrade Guide](#upgrade-guide)
 - [Installation](#installation)
@@ -23,13 +14,16 @@
 - [Auto Scan Vendor Directory](#auto-scan-vendor-directory)
 - [Publishing Modules](#publishing-modules)
 
-`nwidart/laravel-modules` is a laravel package which created to manage your large laravel app using modules. Module is like a laravel package, it has some views, controllers or models. This package is supported and tested in Laravel 5.
 
-This package is a re-published, re-organised and maintained version of [pingpong/modules](https://github.com/pingpong-labs/modules), which isn't maintained anymore. This package is used in [AsgardCMS](https://asgardcms.com/).
+This is a laravel project for large laravel apps using modules inspired in:
+- `rappasoft/laravel-5-boilerplate`
+- `nwidart/laravel-modules`
+- `amamarul/boiler-plate-commands`
 
-With one big added bonus that the original package didn't have: **tests**.
-
-Find out why you should use this package in the article: [Writing modular applications with laravel-modules](https://nicolaswidart.com/blog/writing-modular-applications-with-laravel-modules).
+LaravelModules by default has a "Core Module" to manage Modules and the following Modules:
+- Base Module
+- Users Module
+- Menu Module
 
 <a name="upgrade-guide"></a>
 ## Upgrade Guide
@@ -51,7 +45,7 @@ Next add the following service provider in `config/app.php`.
 
 ```php
 'providers' => [
-  Amamarul\ModulesMaru\LaravelModulesServiceProvider::class,
+  Amamarul\Modules\LaravelModulesServiceProvider::class,
 ],
 ```
 
@@ -59,14 +53,20 @@ Next, add the following aliases to `aliases` array in the same file.
 
 ```php
 'aliases' => [
-  'Module' => Amamarul\ModulesMaru\Facades\Module::class,
+  'Module' => Amamarul\Modules\Facades\Module::class,
 ],
 ```
 
 Next publish the package's configuration file by running :
 
 ```
-php artisan vendor:publish --provider="Amamarul\ModulesMaru\LaravelModulesServiceProvider"
+php artisan vendor:publish --provider="Amamarul\Modules\LaravelModulesServiceProvider"
+```
+
+Next run in console:
+
+```
+php artisan module:core:install"
 ```
 
 #### Autoloading
@@ -137,6 +137,18 @@ php artisan module:make Blog --plain
 php artisan module:make Blog -p
 ```
 
+**Import a new module from GitHub**
+
+Run in console
+``` bash
+php artisan module:new:install <ModuleName> <gitUser>/<repositoryName>
+```
+
+Example
+``` bash
+php artisan module:new:install Users laravelmodules/users
+```
+
 <a name="naming-convension"></a>
 **Naming Convension**
 
@@ -153,23 +165,52 @@ vendor/
 Modules/
   ├── Blog/
       ├── Assets/
+      ├── Breadcrumbs/
       ├── Config/
       ├── Console/
       ├── Database/
           ├── Migrations/
           ├── Seeders/
-      ├── Entities/
+      ├── Emails/
+      ├── Events/
+      ├── Helpers/
+          ├── helpers.php
       ├── Http/
           ├── Controllers/
+              ├── Backend/
+              ├── Dashboard/
+              ├── Frontend/
           ├── Middleware/
           ├── Requests/
-          ├── routes.php
+              ├── Backend/
+              ├── Dashboard/
+              ├── Frontend/
+      ├── Jobs/
+      ├── Models/
+      ├── Notifications/
       ├── Providers/
           ├── BlogServiceProvider.php
+          ├── BreadcrumbsServiceProvider.php
+          ├── RouteServiceProvider.php
+          ├── SidebarServiceProvider.php
+      ├── Repositories/
+          ├── Backend/
+          ├── Dashboard/
+          ├── Frontend/
+      ├── routes/
+          ├── Backend/
+              ├── routes.php
+          ├── Dashboard/
+              ├── routes.php
+          ├── Frontend/
+              ├── routes.php
+          ├── routes.php
       ├── Resources/
           ├── lang/
           ├── views/
-      ├── Repositories/
+      ├── Sidebar/
+          ├── admin.php
+          ├── dashboard.php
       ├── Tests/
       ├── composer.json
       ├── module.json
@@ -475,7 +516,7 @@ Module::find('name');
 Module::get('name');
 ```
 
-Find a module, if there is one, return the `Module` instance, otherwise throw `Amamarul\ModulesMaru\Exeptions\ModuleNotFoundException`.
+Find a module, if there is one, return the `Module` instance, otherwise throw `Amamarul\Modules\Exeptions\ModuleNotFoundException`.
 
 ```php
 Module::findOrFail('module-name');
@@ -746,7 +787,20 @@ php artisan module:list
 
 <a name="publishing-modules"></a>
 ## Publishing Modules
+#### Two ways
+1.  Console Way
+ - Verify available Modules in LaravelModules list
+    You can contribute to an existant Module to make improvements
+ - Prepare for Github
+    ``` bash
+        php artisan module:share <module-name>
+    ```
+ Push to Github
+   ``` bash
+   php artisan module:push <module-name>
+   ```
 
+2. Manual Way
 After creating a module and you are sure your module module will be used by other developers. You can push your module to [github](https://github.com) or [bitbucket](https://bitbucket.org) and after that you can submit your module to the packagist website.
 
 You can follow this step to publish your module.
@@ -759,13 +813,8 @@ Submit to packagist is very easy, just give your github repository, click submit
 
 ## Credits
 
-- [Nicolas Widart](https://github.com/nwidart)
-- [gravitano](https://github.com/gravitano)
+- [Maru Amallo - amamarul](https://github.com/amamarul)
 - [All Contributors](../../contributors)
-
-## About Nicolas Widart
-
-Nicolas Widart is a freelance web developer specialising on the laravel framework. View all my packages [on my website](https://nicolaswidart.com/projects).
 
 
 ## License

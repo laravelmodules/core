@@ -1,13 +1,13 @@
 <?php
 
-namespace Amamarul\ModulesMaru;
+namespace Amamarul\Modules;
 
 use Illuminate\Support\ServiceProvider;
-use Amamarul\ModulesMaru\Providers\BootstrapServiceProvider;
-use Amamarul\ModulesMaru\Providers\ConsoleServiceProvider;
-use Amamarul\ModulesMaru\Providers\ContractsServiceProvider;
-use Amamarul\ModulesMaru\Support\Stub;
-use Amamarul\ModulesMaru\Support\Helper;
+use Amamarul\Modules\Providers\BootstrapServiceProvider;
+use Amamarul\Modules\Providers\ConsoleServiceProvider;
+use Amamarul\Modules\Providers\ContractsServiceProvider;
+use Amamarul\Modules\Support\Stub;
+use Amamarul\Modules\Support\Helper;
 
 class LaravelModulesServiceProvider extends ServiceProvider
 {

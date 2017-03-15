@@ -1,16 +1,16 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Migrations;
+namespace Amamarul\Modules\Migrations;
 
 use Illuminate\Support\Collection;
-use Amamarul\ModulesMaru\Module;
+use Amamarul\Modules\Module;
 
 class Migrator
 {
     /**
      * Pingpong Module instance.
      *
-     * @var \Amamarul\ModulesMaru\Module
+     * @var \Amamarul\Modules\Module
      */
     protected $module;
 
@@ -31,7 +31,7 @@ class Migrator
     /**
      * Create new instance.
      *
-     * @param \Amamarul\ModulesMaru\Module $module
+     * @param \Amamarul\Modules\Module $module
      */
     public function __construct(Module $module)
     {

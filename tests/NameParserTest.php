@@ -1,8 +1,8 @@
 <?php
 
-namespace Amamarul\ModulesMaru\tests;
+namespace Amamarul\Modules\tests;
 
-use Amamarul\ModulesMaru\Support\Migrations\NameParser;
+use Amamarul\Modules\Support\Migrations\NameParser;
 
 class NameParserTest extends \PHPUnit_Framework_TestCase
 {

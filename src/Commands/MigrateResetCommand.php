@@ -1,10 +1,10 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands;
+namespace Amamarul\Modules\Commands;
 
 use Illuminate\Console\Command;
-use Amamarul\ModulesMaru\Migrations\Migrator;
-use Amamarul\ModulesMaru\Traits\MigrationLoaderTrait;
+use Amamarul\Modules\Migrations\Migrator;
+use Amamarul\Modules\Traits\MigrationLoaderTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -27,7 +27,7 @@ class MigrateResetCommand extends Command
     protected $description = 'Reset the modules migrations.';
 
     /**
-     * @var \Amamarul\ModulesMaru\Repository
+     * @var \Amamarul\Modules\Repository
      */
     protected $module;
 

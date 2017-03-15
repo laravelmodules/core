@@ -1,12 +1,12 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands;
+namespace Amamarul\Modules\Commands;
 
 use Illuminate\Support\Str;
-use Amamarul\ModulesMaru\Support\Migrations\NameParser;
-use Amamarul\ModulesMaru\Support\Migrations\SchemaParser;
-use Amamarul\ModulesMaru\Support\Stub;
-use Amamarul\ModulesMaru\Traits\ModuleCommandTrait;
+use Amamarul\Modules\Support\Migrations\NameParser;
+use Amamarul\Modules\Support\Migrations\SchemaParser;
+use Amamarul\Modules\Support\Stub;
+use Amamarul\Modules\Traits\ModuleCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 

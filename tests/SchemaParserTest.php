@@ -1,8 +1,8 @@
 <?php
 
-namespace Amamarul\ModulesMaru\tests;
+namespace Amamarul\Modules\tests;
 
-use Amamarul\ModulesMaru\Support\Migrations\SchemaParser;
+use Amamarul\Modules\Support\Migrations\SchemaParser;
 
 class SchemaParserTest extends \PHPUnit_Framework_TestCase
 {

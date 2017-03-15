@@ -1,8 +1,8 @@
 <?php
 
-namespace Amamarul\ModulesMaru\tests;
+namespace Amamarul\Modules\tests;
 
-use Amamarul\ModulesMaru\Facades\Module;
+use Amamarul\Modules\Facades\Module;
 
 class ModuleFacadeTest extends BaseTestCase
 {

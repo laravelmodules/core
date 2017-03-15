@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands;
+namespace Amamarul\Modules\Commands;
 
 use Closure;
 use Illuminate\Support\Arr;

@@ -1,23 +1,23 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Process;
+namespace Amamarul\Modules\Process;
 
-use Amamarul\ModulesMaru\Contracts\RunableInterface;
-use Amamarul\ModulesMaru\Repository;
+use Amamarul\Modules\Contracts\RunableInterface;
+use Amamarul\Modules\Repository;
 
 class Runner implements RunableInterface
 {
     /**
      * The module instance.
      *
-     * @var \Amamarul\ModulesMaru\Repository
+     * @var \Amamarul\Modules\Repository
      */
     protected $module;
 
     /**
      * The constructor.
      *
-     * @param \Amamarul\ModulesMaru\Repository $module
+     * @param \Amamarul\Modules\Repository $module
      */
     public function __construct(Repository $module)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Contracts;
+namespace Amamarul\Modules\Contracts;
 
 interface RepositoryInterface
 {
@@ -28,7 +28,7 @@ interface RepositoryInterface
     /**
      * Get modules as modules collection instance.
      *
-     * @return \Amamarul\ModulesMaru\Collection
+     * @return \Amamarul\Modules\Collection
      */
     public function toCollection();
 

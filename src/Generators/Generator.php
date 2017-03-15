@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Generators;
+namespace Amamarul\Modules\Generators;
 
 abstract class Generator
 {

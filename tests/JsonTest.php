@@ -1,8 +1,8 @@
 <?php
 
-namespace Amamarul\ModulesMaru\tests;
+namespace Amamarul\Modules\tests;
 
-use Amamarul\ModulesMaru\Json;
+use Amamarul\Modules\Json;
 
 class JsonTest extends BaseTestCase
 {

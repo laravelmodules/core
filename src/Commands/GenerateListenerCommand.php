@@ -1,10 +1,10 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands;
+namespace Amamarul\Modules\Commands;
 
-use Amamarul\ModulesMaru\Module;
-use Amamarul\ModulesMaru\Support\Stub;
-use Amamarul\ModulesMaru\Traits\ModuleCommandTrait;
+use Amamarul\Modules\Module;
+use Amamarul\Modules\Support\Stub;
+use Amamarul\Modules\Traits\ModuleCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Routing;
+namespace Amamarul\Modules\Routing;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;

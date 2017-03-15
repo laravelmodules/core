@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Facades;
+namespace Amamarul\Modules\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace Amamarul\ModulesMaru;
+namespace Amamarul\Modules;
 
 use Countable;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use Amamarul\ModulesMaru\Contracts\RepositoryInterface;
-use Amamarul\ModulesMaru\Exceptions\ModuleNotFoundException;
-use Amamarul\ModulesMaru\Process\Installer;
-use Amamarul\ModulesMaru\Process\Updater;
+use Amamarul\Modules\Contracts\RepositoryInterface;
+use Amamarul\Modules\Exceptions\ModuleNotFoundException;
+use Amamarul\Modules\Process\Installer;
+use Amamarul\Modules\Process\Updater;
 
 class Repository implements RepositoryInterface, Countable
 {

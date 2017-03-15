@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru;
+namespace Amamarul\Modules;
 
 use Illuminate\Filesystem\Filesystem;
 

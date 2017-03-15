@@ -1,13 +1,13 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Generators;
+namespace Amamarul\Modules\Generators;
 
 use Illuminate\Config\Repository as Config;
 use Illuminate\Console\Command as Console;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use Amamarul\ModulesMaru\Repository;
-use Amamarul\ModulesMaru\Support\Stub;
+use Amamarul\Modules\Repository;
+use Amamarul\Modules\Support\Stub;
 
 class ModuleGenerator extends Generator
 {

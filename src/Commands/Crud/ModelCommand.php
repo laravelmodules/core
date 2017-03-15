@@ -1,14 +1,14 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands\Crud;
+namespace Amamarul\Modules\Commands\Crud;
 
 use Illuminate\Support\Str;
-use Amamarul\ModulesMaru\Support\Stub;
-use Amamarul\ModulesMaru\Traits\ModuleCommandTrait;
+use Amamarul\Modules\Support\Stub;
+use Amamarul\Modules\Traits\ModuleCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-use Amamarul\ModulesMaru\Commands\GeneratorCommand;
+use Amamarul\Modules\Commands\GeneratorCommand;
 
 class ModelCommand extends GeneratorCommand
 {

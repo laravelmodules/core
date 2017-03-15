@@ -1,6 +1,6 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands\Modules;
+namespace Amamarul\Modules\Commands\Modules;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Composer;
@@ -46,7 +46,7 @@ class ModuleNameCommand extends Command
     protected $currentRoot;
 
     /**
-     * Create a new key generator command.
+     * Change Module name command.
      *
      * @param  \Illuminate\Support\Composer  $composer
      * @param  \Illuminate\Filesystem\Filesystem  $files

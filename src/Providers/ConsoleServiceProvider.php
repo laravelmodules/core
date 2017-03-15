@@ -1,53 +1,54 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Providers;
+namespace Amamarul\Modules\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Amamarul\ModulesMaru\Commands\CommandCommand;
-use Amamarul\ModulesMaru\Commands\ControllerCommand;
-use Amamarul\ModulesMaru\Commands\DisableCommand;
-use Amamarul\ModulesMaru\Commands\DumpCommand;
-use Amamarul\ModulesMaru\Commands\EnableCommand;
-use Amamarul\ModulesMaru\Commands\GenerateEventCommand;
-use Amamarul\ModulesMaru\Commands\GenerateJobCommand;
-use Amamarul\ModulesMaru\Commands\GenerateListenerCommand;
-use Amamarul\ModulesMaru\Commands\GenerateMailCommand;
-use Amamarul\ModulesMaru\Commands\GenerateMiddlewareCommand;
-use Amamarul\ModulesMaru\Commands\GenerateNotificationCommand;
-use Amamarul\ModulesMaru\Commands\GenerateProviderCommand;
-use Amamarul\ModulesMaru\Commands\GenerateRouteProviderCommand;
-use Amamarul\ModulesMaru\Commands\InstallCommand;
-use Amamarul\ModulesMaru\Commands\ListCommand;
-use Amamarul\ModulesMaru\Commands\MakeCommand;
-use Amamarul\ModulesMaru\Commands\MakeRequestCommand;
-use Amamarul\ModulesMaru\Commands\MigrateCommand;
-use Amamarul\ModulesMaru\Commands\MigrateRefreshCommand;
-use Amamarul\ModulesMaru\Commands\MigrateResetCommand;
-use Amamarul\ModulesMaru\Commands\MigrateRollbackCommand;
-use Amamarul\ModulesMaru\Commands\MigrationCommand;
-use Amamarul\ModulesMaru\Commands\ModelCommand;
-use Amamarul\ModulesMaru\Commands\PublishCommand;
-use Amamarul\ModulesMaru\Commands\PublishConfigurationCommand;
-use Amamarul\ModulesMaru\Commands\PublishMigrationCommand;
-use Amamarul\ModulesMaru\Commands\PublishTranslationCommand;
-use Amamarul\ModulesMaru\Commands\SeedCommand;
-use Amamarul\ModulesMaru\Commands\SeedMakeCommand;
-use Amamarul\ModulesMaru\Commands\SetupCommand;
-use Amamarul\ModulesMaru\Commands\UpdateCommand;
-use Amamarul\ModulesMaru\Commands\UseCommand;
+use Amamarul\Modules\Commands\CommandCommand;
+use Amamarul\Modules\Commands\ControllerCommand;
+use Amamarul\Modules\Commands\DisableCommand;
+use Amamarul\Modules\Commands\DumpCommand;
+use Amamarul\Modules\Commands\EnableCommand;
+use Amamarul\Modules\Commands\GenerateEventCommand;
+use Amamarul\Modules\Commands\GenerateJobCommand;
+use Amamarul\Modules\Commands\GenerateListenerCommand;
+use Amamarul\Modules\Commands\GenerateMailCommand;
+use Amamarul\Modules\Commands\GenerateMiddlewareCommand;
+use Amamarul\Modules\Commands\GenerateNotificationCommand;
+use Amamarul\Modules\Commands\GenerateProviderCommand;
+use Amamarul\Modules\Commands\GenerateRouteProviderCommand;
+use Amamarul\Modules\Commands\InstallCommand;
+use Amamarul\Modules\Commands\ListCommand;
+use Amamarul\Modules\Commands\MakeCommand;
+use Amamarul\Modules\Commands\MakeRequestCommand;
+use Amamarul\Modules\Commands\MigrateCommand;
+use Amamarul\Modules\Commands\MigrateRefreshCommand;
+use Amamarul\Modules\Commands\MigrateResetCommand;
+use Amamarul\Modules\Commands\MigrateRollbackCommand;
+use Amamarul\Modules\Commands\MigrationCommand;
+use Amamarul\Modules\Commands\ModelCommand;
+use Amamarul\Modules\Commands\PublishCommand;
+use Amamarul\Modules\Commands\PublishConfigurationCommand;
+use Amamarul\Modules\Commands\PublishMigrationCommand;
+use Amamarul\Modules\Commands\PublishTranslationCommand;
+use Amamarul\Modules\Commands\SeedCommand;
+use Amamarul\Modules\Commands\SeedMakeCommand;
+use Amamarul\Modules\Commands\SetupCommand;
+use Amamarul\Modules\Commands\UpdateCommand;
+use Amamarul\Modules\Commands\UseCommand;
 
-use Amamarul\ModulesMaru\Commands\GenerateSidebarProviderCommand as SidebarProvider;
-use Amamarul\ModulesMaru\Commands\GenerateBreadcrumbsProviderCommand as BreadcrumbsProvider;
-use Amamarul\ModulesMaru\Commands\Crud\ControllerCommand as CrudController;
-use Amamarul\ModulesMaru\Commands\Crud\MakeDatatableCommand as CrudDatatable;
-use Amamarul\ModulesMaru\Commands\Crud\ModelCommand as CrudModel;
-use Amamarul\ModulesMaru\Commands\Crud\MakeRequestCommand as CrudRequest;
-use Amamarul\ModulesMaru\Commands\Crud\CrudCommand as Crud;
-use Amamarul\ModulesMaru\Commands\RouteListCommand as RouteList;
-use Amamarul\ModulesMaru\Commands\GenerateGitkeepCommand as GenerateGitkeep;
-use Amamarul\ModulesMaru\Commands\RemoveGitkeepCommand as RemoveGitkeep;
-use Amamarul\ModulesMaru\Commands\Modules\ModuleNameCommand as ModuleName;
-
+use Amamarul\Modules\Commands\GenerateSidebarProviderCommand as SidebarProvider;
+use Amamarul\Modules\Commands\GenerateBreadcrumbsProviderCommand as BreadcrumbsProvider;
+use Amamarul\Modules\Commands\Crud\ControllerCommand as CrudController;
+use Amamarul\Modules\Commands\Crud\MakeDatatableCommand as CrudDatatable;
+use Amamarul\Modules\Commands\Crud\ModelCommand as CrudModel;
+use Amamarul\Modules\Commands\Crud\MakeRequestCommand as CrudRequest;
+use Amamarul\Modules\Commands\Crud\CrudCommand as Crud;
+use Amamarul\Modules\Commands\RouteListCommand as RouteList;
+use Amamarul\Modules\Commands\GenerateGitkeepCommand as GenerateGitkeep;
+use Amamarul\Modules\Commands\RemoveGitkeepCommand as RemoveGitkeep;
+use Amamarul\Modules\Commands\Modules\ModuleNameCommand as ModuleName;
+use Amamarul\Modules\Commands\Installation\Module\NewCommand as NewModule;
+use Amamarul\Modules\Commands\Installation\Install as InstallCoreLaravelModules;
 class ConsoleServiceProvider extends ServiceProvider
 {
     protected $defer = false;
@@ -102,6 +103,8 @@ class ConsoleServiceProvider extends ServiceProvider
         GenerateGitkeep::class,
         RemoveGitkeep::class,
         ModuleName::class,
+        NewModule::class,
+        InstallCoreLaravelModules::class,
     ];
 
     /**

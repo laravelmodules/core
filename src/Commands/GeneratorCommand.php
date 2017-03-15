@@ -1,10 +1,10 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands;
+namespace Amamarul\Modules\Commands;
 
 use Illuminate\Console\Command;
-use Amamarul\ModulesMaru\Exceptions\FileAlreadyExistException;
-use Amamarul\ModulesMaru\Generators\FileGenerator;
+use Amamarul\Modules\Exceptions\FileAlreadyExistException;
+use Amamarul\Modules\Generators\FileGenerator;
 
 abstract class GeneratorCommand extends Command
 {
@@ -74,7 +74,7 @@ abstract class GeneratorCommand extends Command
     /**
      * Get class namespace.
      *
-     * @param \Amamarul\ModulesMaru\Module $module
+     * @param \Amamarul\Modules\Module $module
      *
      * @return string
      */

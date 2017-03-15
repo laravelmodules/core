@@ -1,10 +1,10 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Process;
+namespace Amamarul\Modules\Process;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
-use Amamarul\ModulesMaru\Repository;
+use Amamarul\Modules\Repository;
 use Symfony\Component\Process\Process;
 
 class Installer
@@ -26,7 +26,7 @@ class Installer
     /**
      * The module repository instance.
      *
-     * @var \Amamarul\ModulesMaru\Repository
+     * @var \Amamarul\Modules\Repository
      */
     protected $repository;
 
@@ -84,7 +84,7 @@ class Installer
     /**
      * Set the module repository instance.
      *
-     * @param \Amamarul\ModulesMaru\Repository $repository
+     * @param \Amamarul\Modules\Repository $repository
      *
      * @return $this
      */

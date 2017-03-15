@@ -1,13 +1,13 @@
 <?php
 
-namespace Amamarul\ModulesMaru\Commands;
+namespace Amamarul\Modules\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use RuntimeException;
-use Amamarul\ModulesMaru\Module;
-use Amamarul\ModulesMaru\Repository;
-use Amamarul\ModulesMaru\Traits\ModuleCommandTrait;
+use Amamarul\Modules\Module;
+use Amamarul\Modules\Repository;
+use Amamarul\Modules\Traits\ModuleCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
