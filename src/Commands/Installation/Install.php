@@ -58,11 +58,22 @@ class Install extends Command
         new Process('composer dumpautoload', base_path());
 
         $this->installDefaultModules();
+        $this->removeStandardMigrations();
 
         $this->table(
             ['Task', 'Status'],
             [
                 ['Installing Laravel Modules', '<info>✔</info>'],
+                ['Installing Npm Package Config', '<info>✔</info>'],
+                ['Installing Webpack File', '<info>✔</info>'],
+                ['Installing Views', '<info>✔</info>'],
+                ['Updating Auth Config', '<info>✔</info>'],
+                ['Installing JavaScript', '<info>✔</info>'],
+                ['Installing Sass', '<info>✔</info>'],
+                ['Installing Modules Namespace', '<info>✔</info>'],
+                ['Install Default Modules', '<info>✔</info>'],
+                ['Remove Standard Migrations', '<info>✔</info>'],
+                ['Application key set successfully', '<info>✔</info>'],
             ]
         );
 
@@ -77,7 +88,7 @@ class Install extends Command
         if ($this->option('force') || $this->confirm('Would you like to run Gulp?', 'yes')) {
             (new Process('npm run production', base_path()))->setTimeout(null)->run();
         }
-
+        new Process('composer dumpautoload', base_path());
         $this->displayPostInstallationNotes();
     }
 
@@ -122,6 +133,16 @@ class Install extends Command
     }
 
     /**
+     * Remove Standard Migrations.
+     *
+     * @return void
+     */
+    protected function removeStandardMigrations()
+    {
+        $this->files->cleanDirectory(base_path().'/database/migrations');
+    }
+
+    /**
      * Install the "package.json" file for the project.
      *
      * @return void
@@ -154,13 +175,13 @@ class Install extends Command
      */
     protected function installViews()
     {
-        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/views/backend',
+        $this->files->copyDirectory(__DIR__.'/stubs/resources/views/backend',
         base_path('resources/views/backend'));
-        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/views/dashboard',
+        $this->files->copyDirectory(__DIR__.'/stubs/resources/views/dashboard',
         base_path('resources/views/dashboard'));
-        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/views/frontend',
+        $this->files->copyDirectory(__DIR__.'/stubs/resources/views/frontend',
         base_path('resources/views/frontend'));
-        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/views/includes',
+        $this->files->copyDirectory(__DIR__.'/stubs/resources/views/includes',
         base_path('resources/views/includes'));
     }
 
@@ -175,7 +196,7 @@ class Install extends Command
         if (! is_dir('resources/assets/js')) {
             mkdir(base_path('resources/assets/js'));
         }
-        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/assets/js',
+        $this->files->copyDirectory(__DIR__.'/stubs/resources/assets/js',
         base_path('resources/assets/js'));
     }
 
@@ -186,7 +207,7 @@ class Install extends Command
      */
     protected function installSass()
     {
-        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/assets/sass',
+        $this->files->copyDirectory(__DIR__.'/stubs/resources/assets/sass',
         base_path('resources/assets/sass'));
     }
 
@@ -251,10 +272,12 @@ APP_LOCALE_PHP=en_US',
      */
     protected function installDefaultModules()
     {
-        $this->call('module:new:install', [
-            'name' => 'Users',
-            'github' => 'laravelmodules/users',
-        ]);
+        if (! is_dir(base_path().'/Modules/Users')) {
+            $this->call('module:new:install', [
+                'name' => 'Users',
+                'github' => 'laravelmodules/users',
+            ]);
+        }
     }
 
     /**
