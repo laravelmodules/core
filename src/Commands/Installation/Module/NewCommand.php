@@ -33,9 +33,9 @@ class NewCommand extends Command
      * @var string
      */
     protected $description = 'Install the LaravelModules New Module into the application.
-    Args:
-    "name" => Module Name (The namespace.),
-    "github" => The GitHub repository (Ex. <user>/<repository>)';
+                                Args:
+                                "name" => Module Name (The namespace.),
+                                "github" => The GitHub repository (Ex. <user>/<repository>)';
 
     /**
      * Get the console command arguments.

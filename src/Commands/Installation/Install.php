@@ -5,6 +5,7 @@ namespace Amamarul\Modules\Commands\Installation;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
+use Amamarul\Modules\Json;
 
 class Install extends Command
 {
@@ -56,7 +57,7 @@ class Install extends Command
         $this->call('key:generate');
         new Process('composer dumpautoload', base_path());
 
-
+        $this->installDefaultModules();
 
         $this->table(
             ['Task', 'Status'],
@@ -87,13 +88,13 @@ class Install extends Command
      */
     protected function updateAuthConfig()
     {
-        $path = config_path('auth.php');
+        $path = config_path().'/auth.php';
         $search = [
-            'model' => App\User::class,
+            "'model' => App\User::class"
         ];
 
         $replace = [
-            'model' => Modules\Users\Models\Access\User\User::class,
+            "'model' => Modules\Users\Models\Access\User\User::class"
         ];
 
         $this->replaceIn($path, $search, $replace);
@@ -107,17 +108,17 @@ class Install extends Command
     */
     protected function installModulesNamespace()
     {
-        $path = base_path('composer.json');
-        $search = [
-            '"App\\": "app/"',
-        ];
+        $file = 'composer.json';
+        $file = new Json(base_path() . '/' . $file);
+        $file_a = $file->toArray();
+        $autoload = $file_a['autoload'];
+        $psr_4 = $file_a['autoload']['psr-4'];
+        $psr_4 = array_add($psr_4, 'Modules\\','Modules/');
+        array_set($autoload,'psr-4', $psr_4);
+        $file->set('autoload',$autoload);
+        $file->save();
 
-        $replace = [
-            '"App\\": "app/",\n
-            "Modules\\": "Modules/"\n',
-        ];
-
-        $this->replaceIn($path, $search, $replace);
+        return;
     }
 
     /**
@@ -153,22 +154,14 @@ class Install extends Command
      */
     protected function installViews()
     {
-        copy(
-            __DIR__.'/stubs/resources/views/backend',
-            base_path('resources/views/backend')
-        );
-        copy(
-            __DIR__.'/stubs/resources/views/dashboard',
-            base_path('resources/views/dashboard')
-        );
-        copy(
-            __DIR__.'/stubs/resources/views/frontend',
-            base_path('resources/views/frontend')
-        );
-        copy(
-            __DIR__.'/stubs/resources/views/includes',
-            base_path('resources/views/includes')
-        );
+        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/views/backend',
+        base_path('resources/views/backend'));
+        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/views/dashboard',
+        base_path('resources/views/dashboard'));
+        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/views/frontend',
+        base_path('resources/views/frontend'));
+        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/views/includes',
+        base_path('resources/views/includes'));
     }
 
 
@@ -182,11 +175,8 @@ class Install extends Command
         if (! is_dir('resources/assets/js')) {
             mkdir(base_path('resources/assets/js'));
         }
-
-        copy(
-            __DIR__.'/stubs/resources/assets/js',
-            base_path('resources/assets/js')
-        );
+        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/assets/js',
+        base_path('resources/assets/js'));
     }
 
     /**
@@ -196,10 +186,8 @@ class Install extends Command
      */
     protected function installSass()
     {
-        copy(
-            __DIR__.'/stubs/resources/assets/sass',
-            base_path('resources/assets/sass')
-        );
+        $this->files->copyDirectory(base_path().'vendor/laravelmodules/Commands/Installation/stubs/resources/assets/sass',
+        base_path('resources/assets/sass'));
     }
 
     /**
@@ -229,51 +217,15 @@ class Install extends Command
         ];
 
         $replace = [
-            'APP_LOCALE=en \n
-            APP_FALLBACK_LOCALE=en \n
-            APP_LOCALE_PHP=en_US \n \n',
+'APP_URL=http://localhost
+APP_LOCALE=en
+APP_FALLBACK_LOCALE=en
+APP_LOCALE_PHP=en_US',
         ];
 
         $this->replaceIn($path, $search, $replace);
 
-        $data = "
-        \n
-        # Security\n
-        SESSION_TIMEOUT_STATUS=true\n
-        SESSION_TIMEOUT=600\n
-        \n
-        # Access\n
-        ENABLE_REGISTRATION=true\n
-        \n
-        # Get your credentials at: https://www.google.com/recaptcha/admin\n
-        REGISTRATION_CAPTCHA_STATUS=false\n
-        NOCAPTCHA_SITEKEY=\n
-        NOCAPTCHA_SECRET=\n
-        \n
-        # Socialite Providers\n
-        #FACEBOOK_CLIENT_ID=\n
-        #FACEBOOK_CLIENT_SECRET=\n
-        #FACEBOOK_REDIRECT=\n
-        \n
-        #BITBUCKET_CLIENT_ID=\n
-        #BITBUCKET_CLIENT_SECRET=\n
-        #BITBUCKET_REDIRECT=\n
-        \n
-        #GITHUB_CLIENT_ID=\n
-        #GITHUB_CLIENT_SECRET=\n
-        #GITHUB_REDIRECT=\n
-        \n
-        #GOOGLE_CLIENT_ID=\n
-        #GOOGLE_CLIENT_SECRET=\n
-        #GOOGLE_REDIRECT=\n
-        \n
-        #LINKEDIN_CLIENT_ID=\n
-        #LINKEDIN_CLIENT_SECRET=\n
-        #LINKEDIN_REDIRECT=\n
-        \n
-        #TWITTER_CLIENT_ID=\n
-        #TWITTER_CLIENT_SECRET=\n
-        #TWITTER_REDIRECT=\n";
+        $data = "\n# Security\nSESSION_TIMEOUT_STATUS=true\nSESSION_TIMEOUT=600\n\n# Access\nENABLE_REGISTRATION=true\n\n# Get your credentials at: https://www.google.com/recaptcha/admin\nREGISTRATION_CAPTCHA_STATUS=false\nNOCAPTCHA_SITEKEY=\nNOCAPTCHA_SECRET=\n\n# Socialite Providers\n#FACEBOOK_CLIENT_ID=\n#FACEBOOK_CLIENT_SECRET=\n#FACEBOOK_REDIRECT=\n\n#BITBUCKET_CLIENT_ID=\n#BITBUCKET_CLIENT_SECRET=\n#BITBUCKET_REDIRECT=\n\n#GITHUB_CLIENT_ID=\n#GITHUB_CLIENT_SECRET=\n#GITHUB_REDIRECT=\n\n#GOOGLE_CLIENT_ID=\n#GOOGLE_CLIENT_SECRET=\n#GOOGLE_REDIRECT=\n\n#LINKEDIN_CLIENT_ID=\n#LINKEDIN_CLIENT_SECRET=\n#LINKEDIN_REDIRECT=\n\n#TWITTER_CLIENT_ID=\n#TWITTER_CLIENT_SECRET=\n#TWITTER_REDIRECT=\n";
         $this->files->append($path,$data);
     }
 
@@ -290,6 +242,19 @@ class Install extends Command
         if ($this->files->exists($path)) {
             $this->files->put($path, str_replace($search, $replace, $this->files->get($path)));
         }
+    }
+
+    /**
+     * Update the "auth" configuration file.
+     *
+     * @return void
+     */
+    protected function installDefaultModules()
+    {
+        $this->call('module:new:install', [
+            'name' => 'Users',
+            'github' => 'laravelmodules/users',
+        ]);
     }
 
     /**
