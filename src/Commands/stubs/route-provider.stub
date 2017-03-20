@@ -35,9 +35,19 @@ class $NAME$ extends ServiceProvider
     public function map(Router $router)
     {
         if (!app()->routesAreCached()) {
+            /**
+            * Web Routes
+            */
             $router->group(['middleware' => 'web', 'namespace' => $this->rootUrlNamespace, 'module' => '$LOWER_NAME$'], function()
             {
-                require __DIR__ . '/../routes/routes.php';
+                require __DIR__ . '/../routes/web.php';
+            });
+            /**
+            * Api Routes
+            */
+            $router->group(['middleware' => 'api', 'namespace' => $this->rootUrlNamespace,'prefix' => 'api', 'module' => '$LOWER_NAME$'], function()
+            {
+                require __DIR__ . '/../routes/api.php';
             });
         }
     }

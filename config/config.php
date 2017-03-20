@@ -27,7 +27,8 @@ return [
         'path' => base_path() . '/vendor/laravelmodules/core/src/Commands/stubs',
         'files' => [
             'start' => 'start.php',
-            'routes/routes' => 'routes/routes.php',
+            'routes/routes' => 'routes/web.php',
+            'routes/routes' => 'routes/api.php',
             'routes/backend' => 'routes/Backend/routes.php',
             'routes/dashboard' => 'routes/Dashboard/routes.php',
             'routes/frontend' => 'routes/Frontend/routes.php',
