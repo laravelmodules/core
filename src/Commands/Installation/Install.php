@@ -127,7 +127,6 @@ class Install extends Command
         }
         new Process('composer dumpautoload', base_path());
         $this->call('optimize');
-        $this->call('module:update');
         $this->call('module:dump');
 
         $this->displayPostInstallationNotes();
