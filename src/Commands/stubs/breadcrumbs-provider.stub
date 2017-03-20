@@ -26,7 +26,7 @@ class $NAME$ extends ServiceProvider
     public function register()
     {
         /**
-         * Register Admin Breadcrumbs (admin)
+         * Register Backend Breadcrumbs (admin)
          */
         require __DIR__ .'/../Breadcrumbs/backend.php';
         /**
