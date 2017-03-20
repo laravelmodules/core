@@ -34,3 +34,5 @@
 //         'css_class' => null,
 //         'permissions' => 'view-backend'
 // ]);
+
+includeFiles(__DIR__.'/Dashboard/');

@@ -154,6 +154,8 @@ return [
             'routes/dashboard' => 'routes/Dashboard',
             'routes/frontend' => 'routes/Frontend',
             'sidebar' => 'Sidebar',
+            'sidebar/backend' => 'Sidebar/Backend',
+            'sidebar/dashboard' => 'Sidebar/Dashboard',
             'test' => 'Tests',
         ],
     ],

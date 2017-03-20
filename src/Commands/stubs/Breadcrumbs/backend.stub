@@ -23,3 +23,5 @@
 //     $breadcrumbs->parent('$LOWER_NAME$.$LOWER_NAME$.index');
 //     $breadcrumbs->push(__('Edit $STUDLY_NAME$'), route('$LOWER_NAME$.$LOWER_NAME$.edit',\Route::current()->parameters()['$LOWER_NAME$']));
 // });
+
+// includeFiles(__DIR__.'/Backend/');
