@@ -180,7 +180,7 @@ class ModuleGenerator extends Generator
     }
 
     /**
-     * Get the pingpong module instance.
+     * Get the module instance.
      *
      * @return Module
      */
@@ -190,7 +190,7 @@ class ModuleGenerator extends Generator
     }
 
     /**
-     * Set the pingpong module instance.
+     * Set the module instance.
      *
      * @param mixed $module
      *

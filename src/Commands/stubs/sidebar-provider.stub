@@ -34,7 +34,7 @@ class $NAME$ extends ServiceProvider
         /**
          * Register to dashboard menu (admin)
          */
-        require __DIR__ .'/../Sidebar/admin.php';
+        require __DIR__ .'/../Sidebar/backend.php';
         /**
          * Register to menu dashboard (dashboard)
          */

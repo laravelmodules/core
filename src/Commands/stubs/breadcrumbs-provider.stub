@@ -28,7 +28,7 @@ class $NAME$ extends ServiceProvider
         /**
          * Register Admin Breadcrumbs (admin)
          */
-        require __DIR__ .'/../Breadcrumbs/admin.php';
+        require __DIR__ .'/../Breadcrumbs/backend.php';
         /**
          * Register Dashboard Breadcrumbs (dashboard)
          */
