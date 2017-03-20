@@ -24,7 +24,7 @@ return [
 
     'stubs' => [
         'enabled' => false,
-        'path' => base_path() . '/vendor/amamarul/laravel-modules/src/Commands/stubs',
+        'path' => base_path() . '/vendor/laravelmodules/core/src/Commands/stubs',
         'files' => [
             'start' => 'start.php',
             'routes/routes' => 'routes/routes.php',

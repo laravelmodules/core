@@ -44,36 +44,60 @@ class Install extends Command
      */
     public function handle()
     {
-        $this->updateAuthConfig();
+        new Process('clear', base_path());
+        $this->comment('Installing Laravel Modules');
+
+        $this->line('<info> - </info>Installing Modules Namespace');
         $this->installModulesNamespace();
+
+        $this->line('<info> - </info>Installing Npm Package Config');
         $this->installNpmPackageConfig();
+
+        $this->line('<info> - </info>Installing Webpack File');
         $this->installWebpackFile();
+
+        $this->line('<info> - </info>Installing Views');
         $this->installViews();
+
+        $this->line('<info> - </info>Updating Auth Config');
         $this->updateAuthConfig();
+
+        $this->line('<info> - </info>Installing JavaScript');
         $this->installJavaScript();
+
+        $this->line('<info> - </info>Installing Sass');
         $this->installSass();
+
+        $this->line('<info> - </info>Installing Laravel Modules Environment Variables');
         $this->installEnvironmentVariables();
-        $this->installModulesNamespace();
+
+        $this->line('<info> - </info>Application key set successfully');
         $this->call('key:generate');
+
         new Process('composer dumpautoload', base_path());
 
+        $this->line('<info> - </info>Installing Default Modules');
         $this->installDefaultModules();
+
+        $this->line('<info> - </info>Removing Standard Migrations');
         $this->removeStandardMigrations();
+        $this->line('');
 
         $this->table(
             ['Task', 'Status'],
             [
-                ['Installing Laravel Modules', '<info>✔</info>'],
+                ['Laravel Modules Installed!', '<info>✔</info>'],
+                ['Installing Modules Namespace', '<info>✔</info>'],
                 ['Installing Npm Package Config', '<info>✔</info>'],
                 ['Installing Webpack File', '<info>✔</info>'],
                 ['Installing Views', '<info>✔</info>'],
                 ['Updating Auth Config', '<info>✔</info>'],
                 ['Installing JavaScript', '<info>✔</info>'],
                 ['Installing Sass', '<info>✔</info>'],
-                ['Installing Modules Namespace', '<info>✔</info>'],
-                ['Install Default Modules', '<info>✔</info>'],
-                ['Remove Standard Migrations', '<info>✔</info>'],
+                ['Installing Laravel Modules Environment Variables', '<info>✔</info>'],
                 ['Application key set successfully', '<info>✔</info>'],
+                ['Installing Default Modules', '<info>✔</info>'],
+                ['Removing Standard Migrations', '<info>✔</info>']
             ]
         );
 
@@ -85,10 +109,27 @@ class Install extends Command
             (new Process('npm install', base_path()))->setTimeout(null)->run();
         }
 
-        if ($this->option('force') || $this->confirm('Would you like to run Gulp?', 'yes')) {
-            (new Process('npm run production', base_path()))->setTimeout(null)->run();
+        if ($this->option('force') || $this->confirm('Would you like to run Mix?', 'yes')) {
+            $this->table(
+                ['Running Mix Option', 'Description'],
+                [
+                    ['dev', 'Run all Mix tasks'],
+                    ['production', 'Run all Mix tasks and minify output'],
+                    ['watch', 'Run all Mix tasks and will continue running in your terminal and watch all relevant files for changes']
+                ]
+            );
+            $mixOption = $this->anticipate('What option you prefer?[dev],[production],[watch]', [
+                                                        'dev',
+                                                        'production',
+                                                        'watch'
+                                                        ], 'production');
+            (new Process('npm run '.$mixOption, base_path()))->setTimeout(null)->run();
         }
         new Process('composer dumpautoload', base_path());
+        $this->call('optimize');
+        $this->call('module:update');
+        $this->call('module:dump');
+
         $this->displayPostInstallationNotes();
     }
 
@@ -290,5 +331,7 @@ APP_LOCALE_PHP=en_US',
         $this->comment('Post Installation Notes:');
 
         $this->line(PHP_EOL.'     → Laravel Modules Installed!');
+        $this->line('');
+
     }
 }
