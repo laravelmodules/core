@@ -12,5 +12,7 @@
     "files": [
         "start.php"
     ],
-    "requires": []
+    "requires": [
+        "laravelmodules/core"
+    ]
 }

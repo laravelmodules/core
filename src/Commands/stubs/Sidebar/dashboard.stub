@@ -1,6 +1,6 @@
 <?php
 
-\MenuDashboard::registerItem([
+\DashboardMenu::registerItem([
     'id' => '$STUDLY_NAME$',
     'priority' => 20,
     'parent_id' => null,

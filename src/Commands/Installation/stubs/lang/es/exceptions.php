@@ -59,6 +59,7 @@ return [
             ],
 
             'deactivated' => 'Su cuenta ha sido desactivada.',
+            'username_taken' => 'El usuario especificado ya está registrado.',
             'email_taken' => 'El correo especificado ya está registrado.',
 
             'password' => [

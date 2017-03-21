@@ -154,8 +154,11 @@ return [
         ],
 
         'frontend' => [
+            'login'                     => 'Username or E-mail Address',
             'email'                     => 'E-mail Address',
+            'username'                  => 'User name',
             'name'                      => 'Name',
+            'lastname'                  => 'Last Name',
             'password'                  => 'Password',
             'password_confirmation'     => 'Password Confirmation',
             'old_password'              => 'Old Password',

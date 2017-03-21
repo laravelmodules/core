@@ -56,6 +56,9 @@ class Install extends Command
         $this->line('<info> - </info>Installing Webpack File');
         $this->installWebpackFile();
 
+        $this->line('<info> - </info>Installing Translations');
+        $this->installLangs();
+
         $this->line('<info> - </info>Installing Views');
         $this->installViews();
 
@@ -90,6 +93,7 @@ class Install extends Command
                 ['Installing Modules Namespace', '<info>✔</info>'],
                 ['Installing Npm Package Config', '<info>✔</info>'],
                 ['Installing Webpack File', '<info>✔</info>'],
+                ['Installing Translations', '<info>✔</info>'],
                 ['Installing Views', '<info>✔</info>'],
                 ['Updating Auth Config', '<info>✔</info>'],
                 ['Installing JavaScript', '<info>✔</info>'],
@@ -209,12 +213,25 @@ class Install extends Command
     }
 
     /**
+     * Install the default translations for the application.
+     *
+     * @return void
+     */
+    protected function installLangs()
+    {
+        $this->files->copyDirectory(__DIR__.'/stubs/lang',
+        base_path('resources/lang'));
+    }
+
+    /**
      * Install the default views for the application.
      *
      * @return void
      */
     protected function installViews()
     {
+        $this->files->copyDirectory(__DIR__.'/stubs/public',
+        base_path('public'));
         $this->files->copyDirectory(__DIR__.'/stubs/resources/views/backend',
         base_path('resources/views/backend'));
         $this->files->copyDirectory(__DIR__.'/stubs/resources/views/dashboard',
@@ -278,7 +295,8 @@ class Install extends Command
         ];
 
         $replace = [
-'APP_URL=http://localhost
+'APP_LOG=daily
+APP_URL=http://localhost
 APP_LOCALE=en
 APP_FALLBACK_LOCALE=en
 APP_LOCALE_PHP=en_US',
@@ -312,10 +330,40 @@ APP_LOCALE_PHP=en_US',
      */
     protected function installDefaultModules()
     {
+        // if (! is_dir(base_path().'/Modules/Base')) {
+        //     $this->call('module:new:install', [
+        //         'name' => 'Base',
+        //         'github' => 'laravelmodules/base',
+        //     ]);
+        // }
+        // if (! is_dir(base_path().'/Modules/History')) {
+        //     $this->call('module:new:install', [
+        //         'name' => 'History',
+        //         'github' => 'laravelmodules/history',
+        //     ]);
+        // }
+        // if (! is_dir(base_path().'/Modules/Menu')) {
+        //     $this->call('module:new:install', [
+        //         'name' => 'Menu',
+        //         'github' => 'laravelmodules/menu',
+        //     ]);
+        // }
+        // if (! is_dir(base_path().'/Modules/Users')) {
+        //     $this->call('module:new:install', [
+        //         'name' => 'Users',
+        //         'github' => 'laravelmodules/users',
+        //     ]);
+        // }
+        // if (! is_dir(base_path().'/Modules/Views')) {
+        //     $this->call('module:new:install', [
+        //         'name' => 'Views',
+        //         'github' => 'laravelmodules/views',
+        //     ]);
+        // }
         if (! is_dir(base_path().'/Modules/Users')) {
-            $this->call('module:new:install', [
-                'name' => 'Users',
-                'github' => 'laravelmodules/users',
+            $this->call('module:install', [
+                'name' => 'laravelmodules/users',
+                'type' => 'github',
             ]);
         }
     }

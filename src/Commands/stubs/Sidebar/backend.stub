@@ -1,6 +1,6 @@
 <?php
 
-\DashboardMenu::registerItem([
+\BackendMenu::registerItem([
     'id' => '$STUDLY_NAME$',
     'priority' => 20,
     'parent_id' => null,
@@ -14,7 +14,7 @@
     'permissions' => ['view-menus']
 ]);
 
-// \DashboardMenu::registerResource([
+// \BackendMenu::registerResource([
 //      'parent' => '$STUDLY_NAME$', // Module Name
 //      'prefix' => '$LOWER_NAME$', // Route prefix
 //      'resource' => '$LOWER_NAME$', // Resouce name
@@ -22,7 +22,7 @@
 //      'priority' => 31, // priority Group
 // ]);
 
-// \DashboardMenu::registerItem([
+// \BackendMenu::registerItem([
 //         'id' => route('$STUDLY_NAME$.usuario.index'),
 //         'priority' => 1,
 //         'parent_id' => '$STUDLY_NAME$',

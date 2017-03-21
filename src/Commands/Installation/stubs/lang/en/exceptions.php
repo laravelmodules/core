@@ -59,6 +59,7 @@ return [
             ],
 
             'deactivated' => 'Your account has been deactivated.',
+            'username_taken' => 'That username is already taken.',
             'email_taken' => 'That e-mail address is already taken.',
 
             'password' => [

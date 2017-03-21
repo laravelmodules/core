@@ -152,8 +152,11 @@ return [
         ],
 
         'frontend' => [
+            'login'                     => 'Usuario o E-mail',
             'email'                     => 'Dirección de Correo',
+            'username'                  => 'Usuario',
             'name'                      => 'Nombre',
+            'lastname'                  => 'Apellido',
             'password'                  => 'Contraseña',
             'password_confirmation'     => 'Confirmación de la Contraseña',
             'old_password'              => 'Antigua Contraseña',
