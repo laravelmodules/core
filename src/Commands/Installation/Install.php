@@ -330,42 +330,51 @@ APP_LOCALE_PHP=en_US',
      */
     protected function installDefaultModules()
     {
-        // if (! is_dir(base_path().'/Modules/Base')) {
-        //     $this->call('module:new:install', [
-        //         'name' => 'Base',
-        //         'github' => 'laravelmodules/base',
-        //     ]);
-        // }
-        // if (! is_dir(base_path().'/Modules/History')) {
-        //     $this->call('module:new:install', [
-        //         'name' => 'History',
-        //         'github' => 'laravelmodules/history',
-        //     ]);
-        // }
-        // if (! is_dir(base_path().'/Modules/Menu')) {
-        //     $this->call('module:new:install', [
-        //         'name' => 'Menu',
-        //         'github' => 'laravelmodules/menu',
-        //     ]);
-        // }
-        // if (! is_dir(base_path().'/Modules/Users')) {
-        //     $this->call('module:new:install', [
-        //         'name' => 'Users',
-        //         'github' => 'laravelmodules/users',
-        //     ]);
-        // }
-        // if (! is_dir(base_path().'/Modules/Views')) {
-        //     $this->call('module:new:install', [
-        //         'name' => 'Views',
-        //         'github' => 'laravelmodules/views',
-        //     ]);
-        // }
-        if (! is_dir(base_path().'/Modules/Users')) {
-            $this->call('module:install', [
-                'name' => 'laravelmodules/users',
-                'type' => 'github',
+        if (! is_dir(base_path().'/Modules/Base')) {
+            $this->call('module:new:install', [
+                'name' => 'Base',
+                'github' => 'laravelmodules/base',
             ]);
         }
+        if (! is_dir(base_path().'/Modules/History')) {
+            $this->call('module:new:install', [
+                'name' => 'History',
+                'github' => 'laravelmodules/history',
+            ]);
+        }
+        if (! is_dir(base_path().'/Modules/Menu')) {
+            $this->call('module:new:install', [
+                'name' => 'Menu',
+                'github' => 'laravelmodules/menu',
+            ]);
+        }
+        if (! is_dir(base_path().'/Modules/Users')) {
+            $this->call('module:new:install', [
+                'name' => 'Users',
+                'github' => 'laravelmodules/users',
+            ]);
+        }
+        if (! is_dir(base_path().'/Modules/Views')) {
+            $this->call('module:new:install', [
+                'name' => 'Views',
+                'github' => 'laravelmodules/views',
+            ]);
+        }
+        $this->call('module:publish-config', [
+            'module' => 'base',
+        ]);
+        $this->call('module:publish-config', [
+            'module' => 'history',
+        ]);
+        $this->call('module:publish-config', [
+            'module' => 'menu',
+        ]);
+        $this->call('module:publish-config', [
+            'module' => 'users',
+        ]);
+        $this->call('module:publish-config', [
+            'module' => 'views',
+        ]);
     }
 
     /**
