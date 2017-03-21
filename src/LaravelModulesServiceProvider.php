@@ -45,6 +45,7 @@ class LaravelModulesServiceProvider extends ServiceProvider
         $this->setupStubPath();
         $this->registerProviders();
         $this->loadHelpers();
+        $this->packages();
     }
 
     /**
@@ -110,5 +111,54 @@ class LaravelModulesServiceProvider extends ServiceProvider
     {
         $this->app->register(ConsoleServiceProvider::class);
         $this->app->register(ContractsServiceProvider::class);
+    }
+
+    public function packages()
+    {
+        /*
+         * Package Service Providers...
+         */
+        $this->app->register(\Arcanedev\LogViewer\LogViewerServiceProvider::class);
+        $this->app->register(\Arcanedev\NoCaptcha\NoCaptchaServiceProvider::class);
+        $this->app->register(\Collective\Html\HtmlServiceProvider::class);
+        $this->app->register(\Creativeorange\Gravatar\GravatarServiceProvider::class);
+        $this->app->register(\DaveJamesMiller\Breadcrumbs\ServiceProvider::class);
+        $this->app->register(\HieuLe\Active\ActiveServiceProvider::class);
+        $this->app->register(\Laravel\Socialite\SocialiteServiceProvider::class);
+        $this->app->register(\Laravel\Tinker\TinkerServiceProvider::class);
+        $this->app->register(\Yajra\Datatables\DatatablesServiceProvider::class);
+        $this->app->register(\Yajra\Datatables\ButtonsServiceProvider::class);
+
+        /*
+         * Third Party Aliases
+         */
+         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+         $loader->alias('Active', \HieuLe\Active\Facades\Active::class);
+         $loader->alias('Breadcrumbs', \DaveJamesMiller\Breadcrumbs\Facade::class);
+         $loader->alias('Captcha', \Arcanedev\NoCaptcha\Facades\NoCaptcha::class);
+         $loader->alias('Form', \Collective\Html\FormFacade::class);
+         $loader->alias('Gravatar', \Creativeorange\Gravatar\Facades\Gravatar::class);
+         $loader->alias('Html', \Collective\Html\HtmlFacade::class);
+         $loader->alias('Socialite', \Laravel\Socialite\Facades\Socialite::class);
+         
+         /*
+          * Sets third party service providers that are only needed on local/testing environments
+          */
+         if ($this->app->environment() != 'production') {
+             /**
+              * Loader for registering facades.
+              */
+             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+
+             /*
+              * Load third party local providers
+              */
+             $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
+
+             /*
+              * Load third party local aliases
+              */
+             $loader->alias('Debugbar', \Barryvdh\Debugbar\Facade::class);
+         }
     }
 }
