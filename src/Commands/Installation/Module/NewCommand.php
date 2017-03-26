@@ -6,7 +6,6 @@ use ZipArchive;
 use RuntimeException;
 use GuzzleHttp\Client;
 use Symfony\Component\Process\Process;
-// use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -14,7 +13,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-// use Symfony\Component\Process\Process;
 
 class NewCommand extends Command
 {
@@ -87,9 +85,6 @@ class NewCommand extends Command
             throw new RuntimeException('The Zip PHP extension is not installed. Please install it and try again.');
         }
 
-        // $this->verifyModuleDoesntExist(
-        //     $directory = ($this->argument('name')) ? getcwd().'/Modules/'.$this->argument('name') : getcwd().'/Modules/'
-        // );
         $this->verifyModuleDoesntExist(
             $directory = ($this->argument('name')) ? getcwd().'/Modules/Tmp/'.$this->argument('name') : getcwd().'/Modules/Tmp/'
         );
@@ -99,23 +94,13 @@ class NewCommand extends Command
         $this->download($zipFile = $this->makeFilename())
              ->extract($zipFile, $directory)
              ->cleanUp($zipFile);
-
         $tempName = array_last(explode('/',$this->argument('github'))).'-master/';
         $tempFolder = $this->laravel->modules->getPath().'/Tmp/';
-        $tempModuleFolder = $tempFolder.$this->argument('name').'/'.$tempName.'/'.$this->argument('name');
+        $tempModuleFolder = $tempFolder.$this->argument('name').'/'.$tempName;
 
         $this->files->moveDirectory($tempModuleFolder,$this->laravel->modules->getPath().'/'.$this->argument('name'));
-        // $this->files->cleanDirectory($tempFolder);
-        $this->files->deleteDirectory($tempFolder);
 
-        // $this->call('module:install '.strtolower($this->argument('name')));
-        // $this->call('module:install '.$this->argument('name')));
-        $this->call('module:install', [
-            'name' => $this->argument('name'),
-        ]);
-        $this->call('module:dump', [
-            'module' => $this->argument('name'),
-        ]);
+        $this->files->deleteDirectory($tempFolder);
 
         $this->line('<comment>Application ready! Build something amazing.</comment>');
     }

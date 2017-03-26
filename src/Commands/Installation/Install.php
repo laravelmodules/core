@@ -360,6 +360,7 @@ APP_LOCALE_PHP=en_US',
                 'github' => 'laravelmodules/views',
             ]);
         }
+        $this->call('module:dump');
         $this->call('module:publish-config', [
             'module' => 'base',
         ]);
