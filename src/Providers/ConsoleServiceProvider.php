@@ -49,6 +49,8 @@ use Amamarul\Modules\Commands\RemoveGitkeepCommand as RemoveGitkeep;
 use Amamarul\Modules\Commands\Modules\ModuleNameCommand as ModuleName;
 use Amamarul\Modules\Commands\Installation\Module\NewCommand as NewModule;
 use Amamarul\Modules\Commands\Installation\Install as InstallCoreLaravelModules;
+use Amamarul\Modules\Commands\MakeComposerCommand as MakeViewComposer;
+use Amamarul\Modules\Commands\Modules\MergeModulesJsonLangFilesCommand as MergeJsonLangFiles;
 class ConsoleServiceProvider extends ServiceProvider
 {
     protected $defer = false;
@@ -92,6 +94,7 @@ class ConsoleServiceProvider extends ServiceProvider
         GenerateMailCommand::class,
         GenerateNotificationCommand::class,
 
+        MakeViewComposer::class,
         SidebarProvider::class,
         BreadcrumbsProvider::class,
         Crud::class,
@@ -103,6 +106,7 @@ class ConsoleServiceProvider extends ServiceProvider
         GenerateGitkeep::class,
         RemoveGitkeep::class,
         ModuleName::class,
+        MergeJsonLangFiles::class,
         NewModule::class,
         InstallCoreLaravelModules::class,
     ];

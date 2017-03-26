@@ -108,6 +108,21 @@ return [
         */
 
         'migration' => base_path('database/migrations'),
+
+        /*
+        |--------------------------------------------------------------------------
+        | Aditional paths
+        |--------------------------------------------------------------------------
+        |
+        | Here you may update the modules paths.
+        | This path only will generate if you run the command
+        |
+        */
+        'extra-paths' => [
+            // php artisan module:make:view-composer
+            'view-composers' => 'Composers',
+        ],
+
         /*
         |--------------------------------------------------------------------------
         | Generator path

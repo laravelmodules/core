@@ -1,0 +1,24 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\App;
+
+class $CLASS$
+{
+    public function compose(View $view)
+    {
+        $foo = [];
+        $bar = [];
+        /*
+        |
+        | You must add this composer into 'start.php' module file
+        |   * For All views
+        |   view()->composer('*', \$NAMESPACE$\$CLASS$::class);
+        |   * For A Specific view
+        |   view()->composer('sidebar', \$NAMESPACE$\$CLASS$::class);
+        |
+        */
+    }
+}
